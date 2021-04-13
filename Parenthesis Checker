@@ -1,0 +1,35 @@
+class Solution
+{
+    // Function to return if the paranthesis are balanced or not
+    static boolean ispar(String x)
+    {
+        // add your code here
+        Stack<Character> s = new Stack<>();
+
+		for (char t : x.toCharArray()) {
+		    
+		    if(!s.isEmpty())
+		    {
+			if (t == '{' || t == '(' || t == '[')
+				s.push(t);
+			else if(t=='}' && s.peek()=='{')
+				s.pop();
+			else if(t==']' && s.peek()=='[')
+				s.pop();
+			else if(t==')' && s.peek()=='(')
+				s.pop();
+					else
+					s.push(t);
+		    }
+		    else
+		    {
+			  s.push(t);
+		    }
+			//s.push(t);
+		}
+
+		if (s.isEmpty())
+			return true;
+		return false;
+    }
+}
