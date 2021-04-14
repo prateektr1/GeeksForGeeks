@@ -1,0 +1,11 @@
+int in = Integer.MAX_VALUE;
+
+		for (char t : pat.toCharArray()) {
+			if (str.indexOf(t) != -1)
+				in = Math.min(str.indexOf(t), in);
+		}
+
+		if (in == Integer.MAX_VALUE)
+			return -1;
+
+		return in;
