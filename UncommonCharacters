@@ -1,0 +1,29 @@
+class Solution
+{
+    String UncommonChars(String A, String B)
+    {
+        // code here
+        
+      StringBuffer sb = new StringBuffer();
+		TreeSet<Character> s = new TreeSet<Character>();
+
+		for (char t : A.toCharArray()) {
+			if (B.indexOf(t) == -1)
+				s.add(t);
+		}
+		
+		for (char t : B.toCharArray()) {
+			if (A.indexOf(t) == -1)
+				s.add(t);
+		}
+
+		if(s.size()==0)
+			return "-1";
+		
+		
+		
+		s.forEach(i->sb.append(i));
+		return new String(sb.toString());
+        
+    }
+}
