@@ -1,0 +1,36 @@
+class Solution
+{
+    public static void sort012(int a[], int n)
+    {
+        int i = 0;
+		int j = n - 1;
+		int mid = 0;
+		int lo = 0;
+		int high = a.length - 1;
+
+		while (mid <= high) {
+			switch (a[mid]) {
+			case 0: {
+				int temp = a[mid];
+				a[mid] = a[lo];
+				a[lo] = temp;
+				mid++;
+				lo++;
+				break;
+			}
+			case 1: {
+				mid++;
+				break;
+			}
+			case 2: {
+				int temp = a[high];
+				a[high] = a[mid];
+				a[mid] = temp;
+				high--;
+				break;
+			}
+
+			}
+		}
+    }
+}
