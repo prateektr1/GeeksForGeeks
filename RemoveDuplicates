@@ -1,0 +1,14 @@
+  String removeDups(String S) {
+        // code here
+        StringBuffer sb = new StringBuffer();
+		Set<Character> s = new HashSet<Character>();
+
+		for (char c : S.toCharArray()) {
+
+			if (!s.contains(c))
+				sb.append(c);
+			s.add(c);
+		}
+
+		return sb.toString();
+    }
