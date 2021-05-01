@@ -1,0 +1,26 @@
+class Solution
+{
+    //Function to find the first position with different bits.
+    public static int posOfRightMostDiffBit(int m, int n)
+    {
+       if(m==n)
+          return -1;
+       int t = (m^n);
+       
+       int count =1;
+        String ch = Integer.toBinaryString(t);
+
+		    for(int k= ch.length()-1;k>=0;k--)
+		    {
+		    	if(ch.charAt(k)=='1')
+		    	{
+		    		break;
+		    	}
+		    	count++;
+		    		
+		    }
+			return count;
+    }
+}
+
+
