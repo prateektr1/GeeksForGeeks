@@ -1,0 +1,30 @@
+class Solution {
+    boolean checkTriplet(int[] arr, int n) {
+        
+        for (int i = 0; i < n; i++)
+            arr[i] = arr[i] * arr[i];
+ 
+        Arrays.sort(arr);
+ 
+        for (int i = n - 1; i >= 2; i--) {
+            
+            int l = 0; 
+            int r = i - 1; 
+            while (l < r) {
+                // A triplet found
+                if (arr[l] + arr[r] == arr[i])
+                    return true;
+ 
+                // Else either move 'l' or 'r'
+                if (arr[l] + arr[r] < arr[i])
+                    l++;
+                else
+                    r--;
+            }
+        }
+ 
+        // If we reach here, then no triplet found
+        return false;
+         
+    }
+}
