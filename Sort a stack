@@ -1,0 +1,9 @@
+class GfG{
+	public Stack<Integer> sort(Stack<Integer> s)
+	{
+		//add code here.
+		s.sort(java.util.Comparator.naturalOrder());
+		
+		return s;
+	}
+}
