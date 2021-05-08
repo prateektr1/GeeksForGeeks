@@ -1,0 +1,23 @@
+class Solution
+{
+    public static Node removeAllDuplicates(Node head)
+    {
+        //code here
+        Node temp = head.next;
+		Node prev = head;
+
+		while (temp != null) {
+			if (prev.data == temp.data) {
+				prev.next = temp.next;
+				temp = temp.next;
+
+			} else {
+				temp = temp.next;
+				prev = prev.next;
+			}
+		}
+
+		return head;
+        
+    }
+}
