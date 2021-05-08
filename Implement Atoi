@@ -1,0 +1,35 @@
+class Solution
+{
+    int atoi(String str)
+    {
+	// Your code here
+	boolean isNegative = false;
+	char t[] = str.toCharArray();
+	StringBuffer sb = new StringBuffer();
+	
+	for(char f : t)
+	{
+	    if(Character.isAlphabetic(f))
+	    {
+	        return -1;
+	    }
+	    
+	    if(f=='-')
+	    {
+	        isNegative = true;
+	        continue;
+	    }
+	    
+	    else
+	    {
+	        sb.append(f);
+	    }
+	}
+	
+	if(isNegative)
+	return -1*Integer.parseInt(sb.toString());
+	
+	return Integer.parseInt(sb.toString());
+	
+    }
+}
