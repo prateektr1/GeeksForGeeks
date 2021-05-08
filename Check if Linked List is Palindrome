@@ -1,0 +1,21 @@
+boolean isPalindrome(Node head) 
+    {
+        
+	  
+        //Your code here
+        if(head==null)
+           return true;
+       
+        StringBuffer sb = new StringBuffer();
+        while(head!=null)
+        {
+            sb.append(head.data);
+            head = head.next;
+        }
+        
+        if(sb.toString().equalsIgnoreCase(sb.reverse().toString()))
+           return true;
+        
+        return false;
+    }    
+}
