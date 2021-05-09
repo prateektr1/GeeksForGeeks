@@ -1,0 +1,26 @@
+class Solution{
+    static int toyCount(int N, int K, int arr[])
+    {
+       int count = 0;
+		int sum = 0;
+		int i = 0;
+		
+		Arrays.sort(arr);
+		
+		while (i < N || sum < K) {
+			if (i >= N)
+				break;
+
+			if (arr[i] < K) {
+				sum = sum + arr[i];
+				if (sum > K)
+					break;
+				i++;
+				count++;
+			} else
+				i++;
+		}
+
+		return count;
+    }
+}
