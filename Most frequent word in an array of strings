@@ -1,0 +1,25 @@
+class Solution
+{
+    //Function to find most frequent word in an array of strings.
+    public String mostFrequentWord(String arr[],int n)
+    {
+        Map<String, Integer> m = new LinkedHashMap<String, Integer>();
+
+		int max = Integer.MIN_VALUE;
+		String ans = "";
+		for (int i = 0; i < n; i++) {
+			int value = m.getOrDefault(arr[i], 0);
+			value++;
+			max = Math.max(max, value);
+			m.put(arr[i], value);
+		}
+
+		for (String s : m.keySet()) {
+			if (m.get(s) == max)
+				ans = s;
+		}
+
+		return ans;
+    }
+
+}
