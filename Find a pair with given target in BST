@@ -1,0 +1,53 @@
+class Solution
+{
+    // root : the root Node of the given BST
+    // target : the target sum
+    
+   ArrayList<Integer> treeToList(Node node, ArrayList<Integer>
+                                                 list)
+    {
+        // Base Case
+        if (node == null)
+            return list;
+
+        treeToList(node.left, list);
+        list.add(node.data);
+        treeToList(node.right, list);
+
+        return list;
+    }
+    
+    public int isPairPresent(Node root, int target)
+    {
+        if(root==null)
+          return 0;
+        
+       ArrayList<Integer> a1 = new ArrayList<Integer>();
+       List<Integer> a2 = treeToList(root,a1);
+
+        int start = 0; 
+        int end = a2.size() - 1;
+
+        while (start < end) {
+
+            if (a2.get(start) + a2.get(end) == target) 
+            {
+                
+                return 1;
+            }
+
+            if (a2.get(start) + a2.get(end) > target) 
+            {
+                end--;
+            }
+
+            if (a2.get(start) + a2.get(end) < target) 
+            {
+                start++;
+            }
+        }
+       
+       return 0;
+        
+    }
+}
