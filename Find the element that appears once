@@ -1,0 +1,23 @@
+class Sol
+{
+    public static int search(int A[], int N)
+    {
+        // your code here
+        Map<Integer,Integer> m = new HashMap<Integer,Integer>();
+        
+        for(int i=0;i<A.length;i++)
+        {
+            int value = m.getOrDefault(A[i],0);
+            value++;
+            m.put(A[i],value);
+        }
+        
+        for(int o : m.keySet())
+        {
+            if(m.get(o)==1)
+              return o;
+        }
+        
+        return -1;
+    }
+}
