@@ -1,0 +1,22 @@
+class Solution
+{
+    static int sum =0;
+    public static void transformTreeUtil (Node root)
+    {
+        //code here
+        if(root==null)
+        return;
+        
+        transformTreeUtil(root.right);
+       int val = root.data;
+        root.data = sum;
+    	sum += val;
+        transformTreeUtil(root.left);
+    }
+  // A wrapper over transformTreeUtil()
+  static void transformTree(Node root)
+  {
+    sum =0;
+    transformTreeUtil(root);
+  }
+}
