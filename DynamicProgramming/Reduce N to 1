@@ -1,0 +1,17 @@
+class Solution{
+    
+     Map<Integer, Integer> dp = new HashMap<>();
+    public int reduceto1(int N){
+        // code here
+        
+         if(N<=1)
+        return 0;
+        
+        if(dp.containsKey(N))
+            return dp.get(N);
+        int ans = 1 + Math.min(N%2 + reduceto1(N/2), N%3 + reduceto1(N/3));
+        
+        dp.put(N,ans) ;
+        return ans;
+    }
+}
