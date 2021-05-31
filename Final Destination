@@ -1,0 +1,11 @@
+class Solution {
+    static int canReach(Long a, Long b, Long x) {
+        // code here
+        
+        if((x > Math.abs(a) + Math.abs(b))
+           && (x-(Math.abs(a)+Math.abs(b)))%2 == 0)
+           return 1;
+        
+        return 0;
+    }
+};
