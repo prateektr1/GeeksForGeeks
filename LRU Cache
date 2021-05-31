@@ -1,0 +1,27 @@
+class LRUCache
+{
+    private static LinkedHashMap<Integer, Integer> map;
+    private static int CAPACITY;
+    public LRUCache(int capacity)
+    {
+        CAPACITY = capacity;
+        map = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
+            protected boolean removeEldestEntry(Map.Entry eldest)
+            {
+                return size() > CAPACITY;
+            }
+        };
+    }
+    
+    public static int get(int key)
+    {
+       return map.getOrDefault(key, -1);
+    }
+
+    //Function for storing key-value pair.
+    public static void set(int key, int value)
+    {
+        // your code here
+        map.put(key, value);
+    }
+}
