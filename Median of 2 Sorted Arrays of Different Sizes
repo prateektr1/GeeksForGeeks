@@ -1,0 +1,29 @@
+class GFG 
+{ 
+    static double medianOfArrays(int n, int m, int a[], int b[]) 
+    {
+        double ans[] = new double[m + n];
+
+		int i = 0;
+		int j = 0;
+		while (i < a.length) {
+			ans[i] = a[i];
+			i++;
+		}
+
+		while (j < b.length) {
+			ans[i] = b[j];
+			i++;
+			j++;
+		}
+		
+		Arrays.sort(ans);
+		
+	   if(ans.length%2!=0)
+		{
+			return ans[(ans.length/2)];
+		}
+		else
+			 return (ans[(ans.length/2)-1]+ans[(ans.length/2)])/2;
+    }
+}
