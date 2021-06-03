@@ -1,0 +1,15 @@
+class Solution
+{
+    int sum(int a , int b)
+    {
+        //code here
+        
+        while(b!=0)
+        {
+            a++; 
+            b--;
+        }
+        
+        return a;
+    }
+}
