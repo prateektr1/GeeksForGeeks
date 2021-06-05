@@ -1,0 +1,39 @@
+
+class Solution
+{   
+    // arr[] : the input array
+    // N : size of the array arr[]
+    
+    //Function to return length of longest subsequence of consecutive integers.
+	static int findLongestConseqSubseq(int arr[], int N)
+	{
+	   HashMap<Integer, Boolean> m = new HashMap<Integer, Boolean>();
+
+		for (int i = 0; i < N; i++) {
+			m.put(arr[i], true);
+		}
+
+		for (int k : m.keySet()) {
+			if (m.containsKey(k - 1))
+				m.put(k, false);
+		}
+
+		int msp = 0;
+		int ml = 0;
+
+		for (int val : arr) {
+			if (m.get(val) == true) {
+				int tl = 1;
+				int tsp = val;
+
+				while (m.containsKey(tsp + tl))
+					tl++;
+
+				if (tl > ml) {
+					ml = tl;
+				}
+			}
+		}
+		return ml;
+	}
+}
