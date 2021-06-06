@@ -1,0 +1,67 @@
+class Solution
+{
+    public String fractionToDecimal(int numerator, int denominator)
+    {
+        // Code here
+        boolean isNegative = false;
+        StringBuffer ans = new StringBuffer();
+        
+        if(denominator==1)
+        {
+            return ans.append(numerator).toString();
+        }
+        
+        if(numerator<0 && denominator<0)
+        {
+           numerator = Math.abs(numerator);
+            denominator = Math.abs(denominator); 
+        }
+        
+         
+        else if(numerator<0 || denominator<0 )
+        {
+            isNegative = true;
+            numerator = Math.abs(numerator);
+            denominator = Math.abs(denominator);
+            
+            ans.append("-");
+        }
+        
+        int q = numerator/denominator;
+        int r = numerator%denominator;
+        
+        ans.append(q);
+        
+        if(r==0)
+        {
+            return ans.toString();
+        }
+        
+        else
+        {
+            ans.append(".");
+            
+            HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
+            while(r!=0)
+            {
+                if(hm.containsKey(r))
+                {
+                   int len = hm.get(r);
+                   ans.insert(len,"(");
+                   ans.append(")");
+                   break;
+                }
+                else
+                {
+                hm.put(r,ans.length());
+                r = r*10;
+                q = r/denominator;
+                r = r%denominator;
+                ans.append(q);
+                }
+            }
+        }
+        
+         return ans.toString();
+    }
+}
