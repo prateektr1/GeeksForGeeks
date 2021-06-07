@@ -1,0 +1,26 @@
+class Solution{
+    //Function to count the frequency of all elements from 1 to N in the array.
+    public static void frequencyCount(int arr[], int N, int P)
+    {
+        Map<Integer,Integer> m = new HashMap<Integer,Integer>();
+        int k=0;
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			m.put(arr[i], m.getOrDefault(arr[i], 0)+1);
+		}
+		
+		Arrays.fill(arr, 0);
+		
+		for(int m1 =1 ;m1<=P;m1++)
+		{
+			int val = m.getOrDefault(m1, 0);
+			if(k>arr.length-1)
+			break;
+			
+			arr[k] = val;
+			k++;
+			
+		}
+    }
+}
