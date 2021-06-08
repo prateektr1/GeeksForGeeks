@@ -1,0 +1,25 @@
+class Tree1
+{
+    Node root;
+ 
+    static int treePathsSumUtil(Node node, int val) 
+    {
+        if (node == null)
+            return 0;
+ 
+        val = (val * 10 + node.data);
+ 
+        
+        if (node.left == null && node.right == null)
+            return val;
+ 
+        return treePathsSumUtil(node.left, val)
+                + treePathsSumUtil(node.right, val);
+    }
+ 
+    
+	public static long treePathsSum(Node root)
+    {
+          return treePathsSumUtil(root, 0);
+	}
+}
