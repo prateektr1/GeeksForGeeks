@@ -1,0 +1,28 @@
+class Tree {
+    ArrayList<Integer> postOrder(Node node) {
+        // code here
+        Node root = node;
+        ArrayList<Integer> ls = new ArrayList<Integer>();
+        Stack<Node> stack = new Stack<>();
+        while(true) {
+            while(root != null) {
+                stack.push(root);
+                stack.push(root);
+                root = root.left;
+            }
+             
+            // Check for empty stack
+            if(stack.empty()) return ls;
+            root = stack.pop();
+             
+            if(!stack.empty() && stack.peek() == root) root = root.right;
+             
+            else {
+               
+                ls.add(root.data);
+               // System.out.print(root.data + " "); 
+                root = null;
+            }
+        }
+    }
+}
