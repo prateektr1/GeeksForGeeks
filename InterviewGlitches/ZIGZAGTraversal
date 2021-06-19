@@ -1,1 +1,51 @@
-//
+ArrayList<Integer> ans = new ArrayList<Integer>();
+	Stack<Node> s1 = new Stack<Node>();
+	Stack<Node> s2 = new Stack<Node>();
+
+	ArrayList<Integer> zigZagTraversal(Node root)
+	{
+	    if (root == null) {
+			return ans;
+		}
+
+		Stack<Node> currentLevel = new Stack<>();
+		Stack<Node> nextLevel = new Stack<>();
+
+		currentLevel.push(root);
+		boolean leftToRight = true;
+
+		while (!currentLevel.isEmpty()) {
+
+			Node node = currentLevel.pop();
+			
+			ans.add(node.data);
+
+			if (leftToRight) {
+				if (node.left!= null) {
+					nextLevel.push(node.left);
+				}
+
+				if (node.right!= null) {
+					nextLevel.push(node.right);
+				}
+			} else {
+				if (node.right != null) {
+					nextLevel.push(node.right);
+				}
+
+				if (node.left != null) {
+					nextLevel.push(node.left);
+				}
+			}
+
+			if (currentLevel.isEmpty()) {
+				leftToRight = !leftToRight;
+				Stack<Node> temp = currentLevel;
+				currentLevel = nextLevel;
+				nextLevel = temp;
+			}
+
+		}
+		
+		return ans;
+	}
