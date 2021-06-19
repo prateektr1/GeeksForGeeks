@@ -1,0 +1,86 @@
+class Solution
+{
+    /*
+    Node class is Defined as follows:
+    class Node{
+        int data;
+        Node left;
+        Node right;
+        Node nextRight;
+        Node(int data){
+            this.data = data;
+            left=null;
+            right=null;
+            nextRight = null;
+        }
+    }
+    */
+    
+   static Node getNextRight(Node p) 
+    {
+        Node temp = p.nextRight;
+   
+        while (temp != null) 
+        {
+            if (temp.left != null)
+                return temp.left;
+            if (temp.right != null)
+                return temp.right;
+            temp = temp.nextRight;
+        }
+   
+        return null;
+    }
+    
+    static void connectRecur(Node p) 
+    {
+      
+        Node temp = null;
+   
+        if (p == null)
+            return;
+   
+        // Set nextRight for root
+        p.nextRight = null;
+   
+        // set nextRight of all levels one by one
+        while (p != null) 
+        {
+            Node q = p;
+   
+            while (q != null) 
+            {
+                if (q.left != null) 
+                {
+            
+                    if (q.right != null)
+                        q.left.nextRight = q.right;
+                    else
+                        q.left.nextRight = getNextRight(q);
+                }
+   
+                if (q.right != null)
+                    q.right.nextRight = getNextRight(q);
+   
+                // Set nextRight for other nodes in pre order fashion
+                q = q.nextRight;
+            }
+   
+            // start from the first node of next level
+            if (p.left != null)
+                p = p.left;
+            else if (p.right != null)
+                p = p.right;
+            else
+                p = getNextRight(p);
+    }
+    }
+    public static void connect(Node root) {
+         if(root==null)
+            return;
+            
+            root.nextRight=null;
+            
+            connectRecur(root);
+    }
+}
