@@ -1,0 +1,49 @@
+class Solution {
+    
+    static int longestSubsequence(int size, int a[])
+    {
+        int parent[] = new int[a.length];
+        int increasingSub[] = new int[a.length+1];
+
+        int length=0;
+
+        for(int i=0;i<a.length;i++)
+        {
+            int low =1;
+            int high = length;
+
+        while(low<=high)
+        {
+
+            int mid = (int)Math.ceil((low+high)/2);
+
+            if(a[increasingSub[mid]]<a[i])
+            {
+                low = mid+1;
+            }
+            else
+            {
+                high = mid-1;
+            }
+        }
+
+        int pos = low;
+        parent[i] = increasingSub[pos-1];
+        increasingSub[pos]= i;
+
+        if(pos>length)
+        length = pos;
+
+        }
+
+        return length;
+
+
+    }
+    
+    static int removeStudents(int[] H, int N) {
+        
+        int n = longestSubsequence(H.length,H);
+        return (N - n);
+    }
+};
