@@ -1,0 +1,30 @@
+class GFG
+{
+    ArrayList<Long> find(long arr[], int n, int x)
+    {
+        ArrayList<Long> ans = new ArrayList<Long>();
+        long a =-1;
+        long b =-1;
+        boolean firstOccur = false;
+        
+        for(int i = 0;i<arr.length;i++)
+        {
+            if(arr[i]==x && !firstOccur)
+            {
+                a = i;
+                b=i;
+                firstOccur = true;
+            }
+            else if(arr[i]==x)
+            {
+                b = Math.max(b,i);
+            }
+            
+        }
+        
+        ans.add(a);
+        ans.add(b);
+        
+        return ans;
+    }
+}
