@@ -1,0 +1,30 @@
+
+class Solution
+{
+    public int[] singleNumber(int[] nums)
+    {
+        Map<Integer,Integer> s = new HashMap<Integer,Integer>();
+        
+        int ans[] = new int[2];
+        
+        int i=0;
+        
+        for(int j=0;j<nums.length;j++)
+        {
+           s.put(nums[j],s.getOrDefault(nums[j],0)+1);
+        }
+        
+        for(int u : s.keySet())
+        {
+            if(s.get(u)==1)
+            {
+                ans[i] =u;
+                i++;
+            }
+        }
+        
+        Arrays.sort(ans);
+        
+        return ans;
+    }
+}
