@@ -1,0 +1,16 @@
+class GFG
+{
+    static boolean deadEndUtil(Node root,int min,int max)
+    {
+        if(root==null) return false;
+        
+        if(max == min)
+           return true;
+        return (deadEndUtil(root.left,min,root.data-1) || deadEndUtil(root.right,root.data+1,max));
+    }
+    public static boolean isDeadEnd(Node root)
+    {
+        //Add your code here.
+        return deadEndUtil(root,1,Integer.MAX_VALUE);
+    }
+}
