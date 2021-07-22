@@ -1,0 +1,40 @@
+class Solution
+{
+    public static Node minValue(Node root)
+    {
+        Node current = root;
+        
+        while(current.left!=null)
+        {
+            current = current.left;
+        }
+        return current;
+    }
+   
+	public Node inorderSuccessor(Node root,Node x)
+         {
+             
+            if (x.right != null)
+        return minValue(x.right);
+ 
+    Node succ = null;
+ 
+    // Start from root and search for
+    // successor down the tree
+    while (root != null)
+    {
+        if (x.data < root.data)
+        {
+            succ = root;
+            root = root.left;
+        }
+        else if (x.data > root.data)
+            root = root.right;
+        else
+            break;
+    }
+    return succ;
+                
+            
+         }
+}
