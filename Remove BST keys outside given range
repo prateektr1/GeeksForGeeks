@@ -1,0 +1,39 @@
+class Solution {
+    Node removekeys(Node root, int l, int r) {
+       
+       if(root == null)
+        {
+            return null;
+        }
+         
+        // FIRST FIX THE LEFT AND
+        // RIGHT SUBTREE OF ROOT
+        root.left = removekeys(root.left,
+                                       l, r);
+        root.right = removekeys(root.right,
+                                        l, r);
+         
+        // NOW FIX THE ROOT. THERE ARE
+        // TWO POSSIBLE CASES FOR THE ROOT
+        // 1. a) Root's key is smaller than
+        // min value(root is not in range)
+        if(root.data < l)
+        {
+            Node rchild = root.right;
+            root = null;
+            return rchild;
+        }
+         
+        // 1. b) Root's key is greater than
+        // max value (Root is not in range)
+        if(root.data > r)
+        {
+            Node lchild = root.left;
+            root = null;
+            return lchild;
+        }
+         
+        // 2. Root in range
+        return root;
+    }
+}
