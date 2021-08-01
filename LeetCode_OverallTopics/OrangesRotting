@@ -1,0 +1,58 @@
+class Solution {
+    
+    int rowLen;
+    int colLen;
+    public int orangesRotting(int[][] grid) {
+        
+        //Base case
+        if(grid == null || grid.length ==0)
+            return -1;
+        rowLen = grid.length;
+        colLen = grid[0].length;
+        int time = 0;
+        for(int i = 0; i<rowLen; i++){
+            for(int j =0; j<colLen; j++){
+                if(grid[i][j] == 2 ){// if rotten
+                    makeRotten(grid,i,j,2);
+                }
+            }
+        }
+        
+        
+        int minutes = 2;
+        for(int[] row : grid) {
+            for(int cell : row) {
+                if(cell == 1)  // could not rot completely
+                    return -1;
+                else
+                    minutes = Math.max(minutes, cell);
+            }
+        }
+        return minutes - 2;
+        
+    }
+    
+     public void makeRotten(int[][] grid, int row, int col, int time){
+        
+         //Base Case
+        if(row < 0 || row >= rowLen || col < 0 || col >= colLen || grid[row][col] == 0) 
+            //grid[row][col] == 0 : Empty Cell
+            return;
+        
+        //Action
+        //grid[row][col]< time ; grid[row][col] >1 : Already rotten as any value >= 2 is rotten
+        //As sometimes time>2 and grid[i][j] == 2 ie >1 so it is already rotten so return simply
+        if(grid[row][col] < time && grid[row][col] > 1) 
+            return ;
+       
+        //Recursion Logic
+        int[][] directions ={{1,0},{-1,0},{0,-1},{0,1}};  //bottom,top,left,right
+        grid[row][col] = time; // making it rotten as we have initially passed 2 for this function
+        for(int[] dir : directions){
+            int r = dir[0] + row;
+            int c = dir[1] + col;
+            makeRotten(grid,r,c,time+1);
+                
+        }
+    }
+}
