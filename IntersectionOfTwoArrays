@@ -1,0 +1,28 @@
+class Solution {
+    // Function to return the count of the number of elements in
+    // the intersection of two arrays.
+    public static int NumberofElementsInIntersection(int a[], int b[], int n, int m) {
+        // Your code here
+        
+        Set<Integer> freq = new HashSet<Integer>();
+        int count =0;
+        int prev_num=Integer.MIN_VALUE;
+        
+        for(int i=0;i<n;i++)
+        {
+           freq.add(a[i]);
+        }
+        
+        for(int j=0;j<m;j++)
+        {
+                if(freq.contains(b[j]))
+                {
+                 count++;
+                 freq.remove(b[j]);
+                }
+        }
+        
+        
+        return count;
+    }
+};
