@@ -1,0 +1,32 @@
+class Solution {
+    static int indexOf(int arr[], int a) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == a)
+				return i;
+		}
+		return -1;
+	}
+	
+    int rowWithMax1s(int arr[][], int n, int m) {
+        
+       	int row_len = m;
+		int ans = 0;
+		int max = 0;
+		int row = 0;
+		int pos =0;
+		for (int i = 0; i < n; i++) {
+			max = 0;
+		    pos = indexOf(arr[i], 1);
+			if(pos<0)
+				continue;
+				
+			max = row_len - pos;
+			if (max > ans) {
+				ans = max;
+				row = i;
+			}
+			
+		}
+		return ans==0?-1:row;
+    }
+}
