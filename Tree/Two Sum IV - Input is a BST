@@ -1,0 +1,24 @@
+class Solution {
+ 
+    public boolean findTarget(TreeNode root, int k) {
+        
+        Stack<TreeNode> stack = new Stack<>();
+	Set<Integer> occ = new HashSet<>();
+	TreeNode node = root;
+	while (node != null || !stack.isEmpty()) {
+		if (node != null) {
+			int val = node.val;
+			if (occ.contains(k - val)) {
+				return true;
+			}
+			occ.add(val);
+			stack.add(node);
+			node = node.left;
+		}
+		else {
+			node = stack.pop().right;
+		}
+	}
+	return false;
+    }
+}
