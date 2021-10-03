@@ -1,4 +1,6 @@
- 
+ static Boolean isSubsetSum(int N, int arr[], int sum){
+        // code here
+        
         int num[] = arr;
         
         int n = num.length;
@@ -23,3 +25,4 @@
     }
 
     return dp[num.length - 1][sum];
+    }
