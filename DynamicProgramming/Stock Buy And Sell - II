@@ -1,0 +1,22 @@
+class Solution{
+    //Function to find the days of buying and selling stock for max profit.
+    ArrayList<ArrayList<Integer> > stockBuySell(int a[], int n) {
+        ArrayList<ArrayList<Integer> >  list=new  ArrayList<ArrayList<Integer> > ();
+        int i=0;
+        while(i<n-1){
+            ArrayList<Integer> temp=new ArrayList<Integer>();
+            while(i<n-1 && a[i]>=a[i+1]){
+                i++;
+            }
+            if(i>=n-1) return list;
+            temp.add(i++);
+            while(i<n-1 && a[i]<=a[i+1]){
+                i++;
+            }
+            temp.add(i++);
+            list.add(temp);
+            
+        }
+        return list;
+    }
+}
