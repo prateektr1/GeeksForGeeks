@@ -1,0 +1,27 @@
+class Solution {
+    
+   
+    
+    void rearrange(int arr[], int n) {
+       
+        List<Integer> postive = new ArrayList<>();
+        List<Integer> negative = new ArrayList<>();
+        for(int ele:arr){
+            if(ele>=0) postive.add(ele);
+            else negative.add(ele);
+        }
+         int i =0,j=0,k=0;
+        
+        while(i<postive.size() && j<negative.size()){
+            arr[k++] = postive.get(i++);
+            arr[k++] = negative.get(j++);
+        }
+        while(i<postive.size()){
+              arr[k++] = postive.get(i++);
+        }
+        while(j<negative.size()){
+              arr[k++] = negative.get(j++);
+        }
+        
+    }
+}
